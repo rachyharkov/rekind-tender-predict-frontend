@@ -10,4 +10,8 @@ $(document).ready(function() {
         $('.should-be-animated').addClass('animate-slide-down-fade-in');
     }, 3400);
 
+    setTimeout(function() {
+        $('.should-be-animated-pop-out').addClass('animate-pop-out');
+    }, 4000)
+
 })

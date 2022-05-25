@@ -27,7 +27,7 @@
     padding: 27px 0 15px 0;
     height: 116px;">
             <div class="header-logo" style="display: flex;">
-                <img src="./assets/images/rekind-logo-baru-rekayasa-industri-r-only.png" alt="logo" class="header-logo-img" style="height: 100%;padding: 10px;">
+                <img src="./assets/images/rekind-logo-baru-rekayasa-industri-r-only.png" alt="logo" class="header-logo-img" style="height: 100%;padding: 10px;margin-top: -6px;">
                 <div style="display: flex; flex-direction: column; margin-top: 6px;">
                     <h1 style="margin: 0;padding: 0;font-size: 31px;">AI Tender</h1>
                     <p style="letter-spacing: 4px;font-size: 10px;text-align: center;margin-top: -4px;;">Predict System</p>
@@ -54,12 +54,36 @@
             <div class="row">
                 <div class="col-md-6" style="display: flex;">
                     <div class="landing-text-welcome-wrapper" style="margin: auto;">
-                        <h2 class="landing-big-title-text">Selamat Datang</h2>
-                        <p style="color: #464646;">Sistem Prediksi Kemenangan Tender Proyek PT Rekayasa Industri berbasis Machine Learning</p>
+                        <div class="animated-title">
+                            <div class="text-top">
+                                <div>
+                                <span>Buat data</span>
+                                <span>Untuk mudah</span>
+                                </div>
+                            </div>
+                            <div class="text-bottom">
+                                <div>Diprediksi!</div>
+                            </div>
+                        </div>
+                        <p class="should-be-animated" style="color: #464646;margin-top: 200px;">Sistem Prediksi Kemenangan Tender Proyek PT Rekayasa Industri berbasis Machine Learning dengan multi-algorithm use!</p>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <img src="./assets/images/2517914.png" alt="gambar" class="img-fluid">
+                <div class="col-md-6" style="position: relative;">
+                    <img src="./assets/images/2517914.png" alt="gambar" class="img-fluid should-be-animated">
+                    <span class="should-be-animated" style="position: absolute;
+                        left: 177px;
+                        font-size: 1.4rem;
+                        bottom: 17.3rem;
+                        color: white;
+                        z-index: 1;"><i class="fas fa-cog fa-spin"></i></span>
+                    <div class="box-landing-pic-1 should-be-animated">
+                        <i class="fas fa-file-excel" style="color: white;"></i>
+                    </div>
+                    <div class="box-landing-pic-2 should-be-animated">
+                        <i class="fas fa-medal"></i>
+                        <span style="font-size: 9px;">67.33%</span>
+                    </div>
+
                 </div>
             </div>
         </div>
