@@ -18,6 +18,58 @@ body {
 }
 
 section {
+  width: 100%;
+}
+
+.animate-text-reveal-logo {
+  animation: text-logo-reveal 3s forwards;
+  animation-delay: 4.2s;
+  left: -100%;
+}
+
+@keyframes text-logo-reveal {
+  0% {
+    left: -100%;
+  }
+  85% {
+    left: -100%;
+  }
+  100% {
+    left: 0;
+  }
+}
+
+.animate-logo-pic {
+  animation: zoomin 3s forwards;
+  animation-delay: 4s;
+  left: 50px;
+  transform: scale(0);
+}
+
+@keyframes zoomin {
+  0% {
+    transform: scale(0);
+    left: 50px;
+    transition: ease-in-out 0.5s;
+  }
+  40% {
+    transform: scale(0.8);
+    left: 50px;
+    transition: ease-in-out 0.5s;
+  }
+  80% {
+    transform: scale(1);
+    left: 50px;
+    transition: ease-in-out 0.5s;
+  }
+  100% {
+    transform: scale(1);
+    left: 0;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1) 0.5s;
+  }
+}
+
+.section {
     max-width: 970px;
     margin: auto;
 }
@@ -91,6 +143,39 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 }
 
 /* end of anu */
+
+.typewriter {
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0 auto;
+  /* Gives that scrolling effect as the typing happens */
+  /* Adjust as needed */
+  animation: typing 2.5s steps(40, end), blink-caret .75s step-end infinite;
+  animation-iteration-count: infinite;
+}
+
+@keyframes typing {
+  from {
+    width: 0
+  }
+  to {
+    width: 100%
+  }
+}
+/* The typewriter cursor effect */
+
+@keyframes blink-caret {
+  from, to {
+    border-color: transparent
+  }
+  50% {
+    border-color: orange;
+  }
+}
 
 .section-4-card {
     border-radius: 5px;
@@ -171,11 +256,22 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     color: #222;
     font-family: Roboto, Arial, sans-serif;
     height: 90vmin;
-    left: 17rem;
+    left: -8.5rem;
+    top: -14rem;
     position: absolute;
-    top: 45%;
-    transform: translate(-50%, -50%) scale(0.6);
-    width: 90vmin;
+    transform: scale(0.6);
+    width: 0;
+    animation: lebarin-garis 1s ease-in-out forwards;
+    animation-delay: 3.5s;
+  }
+
+  @keyframes lebarin-garis {
+    0%{
+      width: 0;
+    }
+    100% {
+      width: 90vmin;
+    }
   }
   
   .animated-title > div {
