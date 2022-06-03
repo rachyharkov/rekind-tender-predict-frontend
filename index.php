@@ -40,7 +40,7 @@
     width: 100%;
     overflow: hidden;
     left: 65px;">
-                    <h1 class="animate-text-reveal-logo" style="margin: 0;padding: 0;font-size: 31px;width: 150px;
+                    <h1 class="animate-text-reveal-logo" style="margin: 0;padding: 0;color: #747474; font-size: 31px;width: 150px;
     position: relative;">AI Tender</h1>
                     <p class="animate-text-reveal-logo" style="letter-spacing: 4px;font-size: 10px;text-align: center;margin-top: -4px;width: 150px;
     position: relative;">Predict System</p>
@@ -108,25 +108,78 @@
         <div class="section" style="position: relative;">
             <div class="container card-shadow-cool" style="position: absolute;
     top: -67px;
-    background: #fff;">
-                <div class="section-2-wrapper" style="padding: 2rem;">
-                    <div class="section-2-text-title">
-                        <h3>Upload Data</h3>
-                    </div>
-                    <div class="section-2-text-description">
-                        <p>Algoritma yang sesuai anda pilih akan memproses data untuk bisa menghasilkan prediksi</p>
-                    </div>
-                    <div class="section-2-operation">
-                        <input type="file" id="file_upload" name="file" class="form-control-file" style="display: none;">
-                        <button class="btn btn-sm btn-primary" onclick=" document.getElementById('file_upload').click() ">Pilih File</button>
-                    </div>
-                    <div class="container">
-                        <ul class="ks-cboxtags">
-                            <li><input type="checkbox" id="checkboxOne" value="1"><label for="checkboxOne">Random Forest</label></li>
-                            <li><input type="checkbox" id="checkboxTwo" value="2" checked><label for="checkboxTwo">Decision Tree</label></li>
-                            <li><input type="checkbox" id="checkboxThree" value="3"><label for="checkboxThree">Logistic Regression</label></li>
-                        </ul>
-                    </div>
+    background: #fff;display: flex;">
+                <div class="section-2-wrapper" style="padding: 2rem; width:100%; transition:ease-in-out 0.5s;">
+                    <form id="form-upload-data">
+                        <div class="section-2-text-title">
+                            <h3>Upload Data</h3>
+                        </div>
+                        <div class="section-2-text-description">
+                            <p>Pilih file berisi data yang selanjutnya akan diproses dengan algoritma yang anda pilih</p>
+                        </div>
+                        <div class="section-2-operation">
+                            <input type="file" id="file_upload" name="input_file" class="form-control-file" style="display: none;">
+                            <button class="btn btn-sm" id="btn_file_upload"><i class="fas fa-file-upload"></i> Pilih File</button>
+                        </div>
+                        <div class="accordion-menu">
+                            <ul>
+                                <li>
+                                    <input type="checkbox" name="inputfillcheckbox" value="0" checked>
+                                    <i class="arrow"></i>
+                                    <h2 id="title-input-x">Input Behavior (Default)</h2>
+                                    <div class="isi-konten">
+                                        <table style="margin: auto;">
+                                            <tr>
+                                                <td>
+                                                    <i class="fas fa-hand-holding-usd"></i>
+                                                </td>
+                                                <td>
+                                                    <!-- create slide input from 0 to 2 -->
+                                                    <div class="range-slider">
+                                                        <span id="rs-bullet" class="rs-label">Moderate</span>
+                                                        <input id="rs-range-line-harga" name="harga" class="rs-range" type="range" value="0" min="0" max="2">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <i class="fas fa-user-friends"></i>
+                                                </td>
+                                                <td>
+                                                    <div class="range-slider">
+                                                        <span id="rs-bullet" class="rs-label">Moderate</span>
+                                                        <input id="rs-range-line-partner" name="partner" class="rs-range" type="range" value="0" min="0" max="2">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <i class="fas fa-chess-knight"></i>
+                                                </td>
+                                                <td>
+                                                    <div class="range-slider">
+                                                        <span id="rs-bullet" class="rs-label">Moderate</span>
+                                                        <input id="rs-range-line-competitor" name="competitor" class="rs-range" type="range" value="0" min="0" max="2">
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="container">
+                            <ul class="ks-cboxtags">
+                                <li><input type="checkbox" name="checkboxalgorithm[]" class="checkboxalgorithm" id="checkboxOne" value="1"><label for="checkboxOne">Logistic Regression</label></li>
+                                <li><input type="checkbox" name="checkboxalgorithm[]" class="checkboxalgorithm" id="checkboxTwo" value="2" checked><label for="checkboxTwo">Decision Tree</label></li>
+                                <li><input type="checkbox" name="checkboxalgorithm[]" class="checkboxalgorithm" id="checkboxThree" value="3"><label for="checkboxThree">Naive Bayes</label></li>
+                            </ul>
+                        </div>
+                        <button class="btn btn-sm btn-primary" type="submit" id="btn-fetch-data" style="border-radius: 38px;background: rgb(222,85,255);background: linear-gradient(132deg, rgba(222,85,255,1) 0%, rgba(131,79,245,1) 100%);border: none;padding: 10px 30px 10px 30px;">Submit</button>
+                    </form>
+                </div>
+                <div class="section-2-info-detail-side" style="width: 0; transition:ease-in-out 0.5s;">
+
                 </div>
             </div>
         </div>
