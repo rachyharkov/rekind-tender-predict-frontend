@@ -170,10 +170,10 @@
                         </div>
                         <div class="container">
                             <ul class="ks-cboxtags">
-                                <li><input type="checkbox" name="checkboxalgorithm[]" class="checkboxalgorithm" id="checkboxOne" value="1"><label for="checkboxOne">Logistic Regression</label></li>
-                                <li><input type="checkbox" name="checkboxalgorithm[]" class="checkboxalgorithm" id="checkboxTwo" value="2" checked><label for="checkboxTwo">Decision Tree</label></li>
-                                <li><input type="checkbox" name="checkboxalgorithm[]" class="checkboxalgorithm" id="checkboxThree" value="3"><label for="checkboxThree">Naive Bayes</label></li>
-                                <li><input type="checkbox" name="checkboxalgorithm[]" class="checkboxalgorithm" id="checkboxFour" value="4"><label for="checkboxFour">Random Forest</label></li>
+                                <li><input type="checkbox" name="checkboxalgorithm[]" class="checkboxalgorithm" id="checkboxOne" value="0"><label for="checkboxOne">Logistic Regression</label></li>
+                                <li><input type="checkbox" name="checkboxalgorithm[]" class="checkboxalgorithm" id="checkboxTwo" value="1" checked><label for="checkboxTwo">Decision Tree</label></li>
+                                <li><input type="checkbox" name="checkboxalgorithm[]" class="checkboxalgorithm" id="checkboxThree" value="2"><label for="checkboxThree">Naive Bayes</label></li>
+                                <li><input type="checkbox" name="checkboxalgorithm[]" class="checkboxalgorithm" id="checkboxFour" value="3"><label for="checkboxFour">Random Forest</label></li>
                             </ul>
                         </div>
                         <button class="btn btn-sm btn-primary" type="submit" id="btn-fetch-data" style="border-radius: 38px;background: rgb(222,85,255);background: linear-gradient(132deg, rgba(222,85,255,1) 0%, rgba(131,79,245,1) 100%);border: none;padding: 10px 30px 10px 30px;">Submit</button>

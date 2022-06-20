@@ -162,7 +162,7 @@ $(document).ready(function() {
                             }
 
                             str+= `<tr>
-                                        <td style="display: flex;justify-content: space-between">${data.results[i].algorithm_name}<button data-title="${data.results[i].message}" class="btn btn-danger btn-sm btn-status-status tooltip-cust fade" style="font-size: 10px;height: 18px;width: 18px; z-index:${(lengthny - i)}" onclick="return false;"><i class="fas fa-question" style="position: absolute;top: 4px;left: 4px;"></i></button></td><td><span class="text-success">${data.results[i].probability.win}</span></td><td><span class="text-danger">${data.results[i].probability.lose}</span></td><td>${icon}</td><td>${data.results[i].evaluation}</td>
+                                        <td style="display: flex;justify-content: space-between">${data.results[i].algorithm_name}<button data-title="Accuracy on Test data is ${data.results[i].accuracy.test} and Train data is ${data.results[i].accuracy.train}" class="btn btn-danger btn-sm btn-status-status tooltip-cust fade" style="font-size: 10px;height: 18px;width: 18px; z-index:${(lengthny - i)}" onclick="return false;"><i class="fas fa-question" style="position: absolute;top: 4px;left: 4px;"></i></button></td><td><span class="text-success">${data.results[i].probability.win}</span></td><td><span class="text-danger">${data.results[i].probability.lose}</span></td><td>${icon}</td><td>${data.results[i].evaluation}</td>
                                     </tr>`
                         }
 
@@ -182,20 +182,59 @@ $(document).ready(function() {
                         icon = '<i class="fas fa-check-circle" style="color: green; font-size: 80px;"></i>'
                     }
 
-                    $('.section-2-info-detail-side').html(`<div style="display: flex;justify-content: space-evenly; flex-direction: column;align-items: center;min-height: 100%; margin: 0;">
+                    $('.section-2-info-detail-side').html(`<div style="display: flex;justify-content: space-evenly; flex-direction: column;align-items: center;min-height: 100%; margin: 0;padding: 2rem 0;">
                         <h3>Evaluation Result</h3>
                         <div>
                             ${icon}
                             <p class="m-0" style="font-size: 14px; font-weight: bold;">${data.results.evaluation}</p>
                             <p style="font-size: 10px;">Prediction Probability: <span class="text-success">${data.results.probability.win}</span> | <span class="text-danger">${data.results.probability.lose}</span></p>
                             <span class="badge rounded-pill bg-primary">${data.algorithm_used}</span>
+                            <div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th>Precision</th>
+                                            <th>Recall</th>
+                                            <th>F1 Score</th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Test Data</td>
+                                            <td>${data.results.precision.test}</td>
+                                            <td>${data.results.recall.test}</td>
+                                            <td>${data.results.f1_score.test}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
                         <div class="alert alert-primary d-flex align-items-center" role="alert">
                             <span class="bi flex-shrink-0 me-2">
                                 <i class="fas fa-microchip"></i>    
                             </span>
                             <div>
-                                ${data.results.message}
+                                <ul>
+                                    <li>Accuracy on Test: <b>${data.results.accuracy.test}</b>
+                                    <li>Accuracy on Train: <b>${data.results.accuracy.train}</b>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="accordion" id="accordionExample">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Graph Analysis
+                                </button>
+                                </h2>
+                                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        <img src="${data.results.graph[0]}" class="img-fluid" alt="">
+                                        <img src="${data.results.graph[1]}" class="img-fluid" alt="">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>`);
