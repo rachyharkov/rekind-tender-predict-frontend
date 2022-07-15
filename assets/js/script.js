@@ -110,7 +110,7 @@ $(document).ready(function() {
         $('.section-2-info-detail-side').html('<div style="display: flex;justify-content: center;align-items: center;min-height: 100%; margin: 0;"><div class="clock-loader"></div></div>');
 
         $.ajax({
-            url: 'http://127.0.0.1:5000/test',
+            url: 'http://127.0.0.1:5000/predict',
             type: 'POST',
             data: formData,
             cache: false,
@@ -140,6 +140,7 @@ $(document).ready(function() {
                                         <th rowspan="2" style="vertical-align: middle;">Algorithm</th>
                                         <th colspan="2">Prob.</th>
                                         <th colspan="2" rowspan="2" style="vertical-align: middle;">Evaluasi</th>
+                                        <th rowspan="2">Action</th>
                                     </tr>
                                     <tr>
                                         <th>Win</th>
@@ -162,7 +163,28 @@ $(document).ready(function() {
                             }
 
                             str+= `<tr>
-                                        <td style="display: flex;justify-content: space-between">${data.results[i].algorithm_name}<button data-title="Accuracy on Test data is ${data.results[i].accuracy.test} and Train data is ${data.results[i].accuracy.train}" class="btn btn-danger btn-sm btn-status-status tooltip-cust fade" style="font-size: 10px;height: 18px;width: 18px; z-index:${(lengthny - i)}" onclick="return false;"><i class="fas fa-question" style="position: absolute;top: 4px;left: 4px;"></i></button></td><td><span class="text-success">${data.results[i].probability.win}</span></td><td><span class="text-danger">${data.results[i].probability.lose}</span></td><td>${icon}</td><td>${data.results[i].evaluation}</td>
+                                        <td style="display: flex;justify-content: space-between">
+                                            ${data.results[i].algorithm_name}
+                                        </td>
+                                        <td>
+                                            <span class="text-success">${data.results[i].probability.win}</span>
+                                        </td>
+                                        <td>
+                                            <span class="text-danger">${data.results[i].probability.lose}</span>
+                                        </td>
+                                        <td>
+                                            ${icon}
+                                        </td>
+                                        <td>
+                                            ${data.results[i].evaluation}
+                                        </td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <button id="btnChartView" data-url='[\"${data.results[i].graph.confusion_matrix.picture}\",\"${data.results[i].graph.tree.picture}\"]' data-desc-cm="${data.results[i].graph.confusion_matrix.detail}" class="btn btn-sm btn-primary"><i class="fas fa-chart-bar"></i></button>
+
+                                                <button class="btn btn-sm btn-success" id="btnInfoOverview" data-info='${data.results[i].report.test}'><i class="fas fa-info-circle"></i></button>
+                                            </div>
+                                        </td>
                                     </tr>`
                         }
 
@@ -188,37 +210,24 @@ $(document).ready(function() {
                             ${icon}
                             <p class="m-0" style="font-size: 14px; font-weight: bold;">${data.results.evaluation}</p>
                             <p style="font-size: 10px;">Prediction Probability: <span class="text-success">${data.results.probability.win}</span> | <span class="text-danger">${data.results.probability.lose}</span></p>
-                            <span class="badge rounded-pill bg-primary">${data.algorithm_used}</span>
-                            <div>
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th></th>
-                                            <th>Precision</th>
-                                            <th>Recall</th>
-                                            <th>F1 Score</th>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Test Data</td>
-                                            <td>${data.results.precision.test}</td>
-                                            <td>${data.results.recall.test}</td>
-                                            <td>${data.results.f1_score.test}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-
+                            <span class="badge rounded-pill bg-primary mb-2">${data.algorithm_used}</span>
                         </div>
                         <div class="alert alert-primary d-flex align-items-center" role="alert">
-                            <span class="bi flex-shrink-0 me-2">
-                                <i class="fas fa-microchip"></i>    
-                            </span>
-                            <div>
-                                <ul>
-                                    <li>Accuracy on Test: <b>${data.results.accuracy.test}</b>
-                                    <li>Accuracy on Train: <b>${data.results.accuracy.train}</b>
-                                </ul>
+                            <div style="text-align: left;">
+                                <p style="font-size: 14px;"><i class="fas fa-fingerprint"></i> Accuracy</p>
+                                <p style="font-size: 12px;">Accuracy menggambarkan seberapa akurat model dapat mengklasifikasikan dengan benar. Maka, accuracy merupakan rasio prediksi benar (positif dan negatif) dengan keseluruhan data. Dengan kata lain, accuracy merupakan tingkat kedekatan nilai prediksi dengan nilai aktual pada dataset.</p>
+                                <table>
+                                    <tr>
+                                        <td>on Test</td>
+                                        <td>:</td>
+                                        <td><b>${data.results.accuracy.test}</b></td>
+                                    </tr>
+                                    <tr>
+                                        <td>on Train</td>
+                                        <td>:</td>
+                                        <td><b>${data.results.accuracy.train}</b></td>
+                                    </tr>
+                                </table>
                             </div>
                         </div>
 
@@ -231,8 +240,27 @@ $(document).ready(function() {
                                 </h2>
                                 <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                     <div class="accordion-body">
-                                        <img src="${data.results.graph[0]}" class="img-fluid" alt="">
-                                        <img src="${data.results.graph[1]}" class="img-fluid" alt="">
+                                        <img src="${data.results.graph.confusion_matrix.picture}" class="img-fluid" alt="">
+                                        <p>${data.results.graph.confusion_matrix.detail}</p>
+                                        <p>Impressive result! berdasarkan confusion matrix di atas, model {nama_model} menggunakan data uji untuk coba memprediksi dan mendapatkan skor :</p>
+                                        <div>
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Precision <button data-title="Precision menggambarkan tingkat keakuratan antara data yang diminta dengan hasil prediksi yang diberikan oleh model. Maka, precision merupakan rasio prediksi benar positif dibandingkan dengan keseluruhan hasil yang diprediksi positif. Nilai Precision memberi tahu kita berapa persen data tender yang nyatanya di menangkan oleh perusahaan dari keseluruhan data yang di prediksi menang oleh model" class="btn btn-danger btn-sm btn-status-status tooltip-cust fade" style="font-size: 10px;height: 18px;width: 18px; z-index:1" onclick="return false;"><i class="fas fa-question" style="position: absolute;top: 4px;left: 4px;"></i></button></th>
+                                                        <th>Recall <button data-title="Recall menggambarkan keberhasilan model dalam menemukan kembali sebuah informasi. Nilai recall memberikan informasi berapa persen perbandingan antara tender yang di prediksi menang oleh model dengan data aktual (dari dataset)." class="btn btn-danger btn-sm btn-status-status tooltip-cust fade" style="font-size: 10px;height: 18px;width: 18px; z-index:1" onclick="return false;"><i class="fas fa-question" style="position: absolute;top: 4px;left: 4px;"></i></button></th>
+                                                        <th>F1 Score <button data-title="F1-skor adalah rata-rata harmonik dari Precision dan Recall, sehingga memberikan ide gabungan tentang dua metrik ini. Ketika mencoba meningkatkan nilai Precision, maka recall menurun (dan sebaliknya). Skor F1 menangkap nilai kedua tren dalam satu nilai. Maksimum ketika nilai Precision sama dengan Recall." class="btn btn-danger btn-sm btn-status-status tooltip-cust fade" style="font-size: 10px;height: 18px;width: 18px; z-index:1" onclick="return false;"><i class="fas fa-question" style="position: absolute;top: 4px;left: 4px;"></i></button></th>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>${data.results.precision.test}</td>
+                                                        <td>${data.results.recall.test}</td>
+                                                        <td>${data.results.f1_score.test}</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <img src="${data.results.graph.tree.picture}" class="img-fluid" alt="">
                                     </div>
                                 </div>
                             </div>
@@ -254,4 +282,31 @@ $(document).ready(function() {
             
         })
     })
+
+    $(document).on('click', '#btnChartView', function() {
+        const urlArray = JSON.parse($(this).attr('data-url'))
+
+        let html = ``;
+
+        $.each(urlArray, function(index, item) {
+            html += `<img src="${item}" class="img-fluid" alt="">`
+        })
+
+        $('#modalInfo').modal('show')        
+        $('#modalInfo .modal-title').html('Graph Overview')
+        $('#modalInfo .modal-body').html(html)
+    })
+
+    $(document).on('click', '#btnInfoOverview', function() {
+        const text = $(this).attr('data-info')
+
+        let html = text;
+
+        $('#modalInfo').modal('show')
+        $('#modalInfo .modal-title').html('Classification Report')
+        $('#modalInfo .modal-body').html(`<pre>${html}</pre>`)
+    })
+
+
 })
+
