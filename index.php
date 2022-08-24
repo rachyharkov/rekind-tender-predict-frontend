@@ -82,7 +82,7 @@
                                     <div>Diprediksi!</div>
                                 </div>
                             </div>
-                            <p class="should-be-animated" style="color: #464646;margin-top: 200px;margin-left: -4px;">Sistem Prediksi Kemenangan Tender Proyek PT Rekayasa Industri berbasis Machine Learning dengan multi-algorithm use!</p>
+                            <p class="should-be-animated" style="color: #464646;margin-top: 23rem;margin-left: -4px;">Sistem Prediksi Kemenangan Tender Proyek PT Rekayasa Industri berbasis Machine Learning dengan multi-algorithm use!</p>
                         </div>
                     </div>
                     <div class="col-md-6" style="position: relative;">

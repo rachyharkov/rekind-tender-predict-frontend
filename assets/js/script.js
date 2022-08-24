@@ -13,10 +13,6 @@ $(document).ready(function() {
     setTimeout(function() {
         $('.should-be-animated-pop-out').addClass('animate-pop-out');
     }, 4000)
-
-
-
-
     
     $(document).on('input','.rs-range', function() {    
         var arrayalgorithm = ['Moderate', 'Medium','Optimis'];

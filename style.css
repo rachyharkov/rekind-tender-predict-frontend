@@ -299,7 +299,7 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
     color: #222;
     font-family: Roboto, Arial, sans-serif;
     height: 90vmin;
-    left: -8.5rem;
+    left: -11.5rem;
     top: -14rem;
     position: absolute;
     transform: scale(0.6);
