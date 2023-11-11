@@ -15,7 +15,7 @@ $(document).ready(function() {
     }, 4000)
     
     $(document).on('input','.rs-range', function() {    
-        var arrayalgorithm = ['Moderate', 'Medium','Optimis'];
+        var arrayalgorithm = ['Low', 'Moderate','Optimis'];
         var thisel = $(this)
         var bulletPosition = (this.value /this.max);
         thisel.prev('.rs-label').html(arrayalgorithm[thisel.val()]).css('left',((bulletPosition * 90) - 10) + "px")

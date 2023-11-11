@@ -138,7 +138,7 @@
                                                 <td>
                                                     <!-- create slide input from 0 to 2 -->
                                                     <div class="range-slider">
-                                                        <span id="rs-bullet" class="rs-label">Moderate</span>
+                                                        <span id="rs-bullet" class="rs-label">Low</span>
                                                         <input id="rs-range-line-harga" name="harga" class="rs-range" type="range" value="0" min="0" max="2">
                                                     </div>
                                                 </td>
@@ -149,7 +149,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="range-slider">
-                                                        <span id="rs-bullet" class="rs-label">Moderate</span>
+                                                        <span id="rs-bullet" class="rs-label">Low</span>
                                                         <input id="rs-range-line-partner" name="partner" class="rs-range" type="range" value="0" min="0" max="2">
                                                     </div>
                                                 </td>
@@ -160,7 +160,7 @@
                                                 </td>
                                                 <td>
                                                     <div class="range-slider">
-                                                        <span id="rs-bullet" class="rs-label">Moderate</span>
+                                                        <span id="rs-bullet" class="rs-label">Low</span>
                                                         <input id="rs-range-line-competitor" name="competitor" class="rs-range" type="range" value="0" min="0" max="2">
                                                     </div>
                                                 </td>
